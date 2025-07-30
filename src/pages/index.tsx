@@ -1,38 +1,39 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
-import Logo from "../../public/img/logo.png";
-import LogoGreen from "../../public/img/logo-green.png";
-import Kilang from "../../public/img/kilang-minyak.png";
-import Tambang from "../../public/img/tambang.png";
-import Gudang from "../../public/img/gudang.png";
-import Pelabuhan from "../../public/img/pelabuhan.png";
-import Industri from "../../public/img/industri.png";
-import Diskusi from "../../public/img/diskusi.png";
-import Digital from "../../public/img/digital.png";
-import ISO9001 from "../../public/img/iso-9001.png";
-import ISO37001 from "../../public/img/iso-37001.png";
-import ISO14001 from "../../public/img/iso-14001.png";
-import ISO45001 from "../../public/img/iso-45001.png";
+import React from "react";
+import ACS from "../../public/img/acs.png";
 import Bki from "../../public/img/bki.png";
-import Sucofindo from "../../public/img/sucofindo.png";
-import SurveyorIndonesia from "../../public/img/surveyor-indonesia.png";
-import Scci from "../../public/img/scci.png";
-import SucofindoAdvisory from "../../public/img/sucofindo-advisory.png";
-import SucofindoEpsi from "../../public/img/sucofindo-epsi.png";
-import Synerga from "../../public/img/synerga.png";
-import ISO90012015 from "../../public/img/iso-9001-2015.png";
+import Digital from "../../public/img/digital.png";
+import Diskusi from "../../public/img/diskusi.png";
+import Gudang from "../../public/img/gudang.png";
+import Industri from "../../public/img/industri.png";
+import IPERINDO from "../../public/img/iperindo.png";
+import ISO14001 from "../../public/img/iso-14001.png";
 import ISO17020 from "../../public/img/iso-17020.png";
 import ISO17025 from "../../public/img/iso-17025.png";
+import ISO17065 from "../../public/img/iso-17065.png";
 import ISO200001 from "../../public/img/iso-20000-1.png";
 import ISO27001 from "../../public/img/iso-27001.png";
+import ISO37001 from "../../public/img/iso-37001.png";
+import ISO45001 from "../../public/img/iso-45001.png";
+import ISO90012015 from "../../public/img/iso-9001-2015.png";
+import ISO9001 from "../../public/img/iso-9001.png";
+import Kilang from "../../public/img/kilang-minyak.png";
 import Kuda from "../../public/img/kuda.png";
+import LogoGreen from "../../public/img/logo-green.png";
+import Logo from "../../public/img/logo.png";
+import Pelabuhan from "../../public/img/pelabuhan.png";
+import Scci from "../../public/img/scci.png";
 import SMK3 from "../../public/img/smk3.png";
-import ISO17065 from "../../public/img/iso-17065.png";
-import ACS from "../../public/img/acs.png";
-import IPERINDO from "../../public/img/iperindo.png";
+import SucofindoAdvisory from "../../public/img/sucofindo-advisory.png";
+import SucofindoEpsi from "../../public/img/sucofindo-epsi.png";
+import Sucofindo from "../../public/img/sucofindo.png";
+import SurveyorIndonesia from "../../public/img/surveyor-indonesia.png";
+import Synerga from "../../public/img/synerga.png";
+import Tambang from "../../public/img/tambang.png";
 
+import { Tab, Tabs } from "@heroui/react";
 import {
   ArrowRight,
   ChevronRight,
@@ -40,37 +41,34 @@ import {
   Instagram,
   Linkedin,
   Twitter,
-  X,
-  Youtube,
+  Youtube
 } from "lucide-react";
-import { Tabs, Tab } from "@heroui/react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/navigation";
 import {
+  Avatar,
+  Button,
+  Divider,
+  Drawer,
+  DrawerContent,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Input,
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownItem,
-  Button,
   Popover,
-  PopoverTrigger,
   PopoverContent,
-  Drawer,
-  DrawerContent,
-  Avatar,
-  Input,
-  Divider,
+  PopoverTrigger
 } from "@heroui/react";
-import { ChevronDown, Menu, Search, Globe } from "lucide-react";
+import { ChevronDown, Menu, Search } from "lucide-react";
 import { useState } from "react";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const holdingMembers = [
   {
@@ -346,7 +344,7 @@ function NavbarIDSurvey() {
   } = useDisclosure();
 
   return (
-    <Navbar className="bg-white/50 shadow-md px-8 md:px-24 py-2 fixed top-0 z-[1000]">
+    <Navbar className="bg-white/50 shadow-md px-8 md:px-2 py-2 fixed top-0 z-[1000]">
       <NavbarBrand>
         <Image src={Logo} alt="IDSurvey Logo" height={40} />
       </NavbarBrand>
@@ -1070,80 +1068,92 @@ const Home = () => {
           </p>
         </div>
       </footer>
-      {typeof window !== "undefined" && window.innerWidth >= 1024 && (
-        <div
-          className={`flex flex-col gap-2 bg-white text-black px-24 z-[999] h-[40dvh] py-8`}
-          style={{
-            position: "fixed",
-            bottom: 0,
-            left: 0,
-          }}
-          id="cookie-agreement"
-        >
-          <h4 className="text-2xl font-semibold">Pemberitahuan</h4>
-          <span className="mr-6 text-sm">
-            Kami menggunakan cookie untuk memastikan situs ini berfungsi dengan
-            baik, menganalisis penggunaan, dan meningkatkan pengalaman Anda.
-            Dengan menyetujui cookie, Anda setuju untuk menyimpan cookie selama
-            12 bulan pada perangkat Anda.
-          </span>
-          <div className="flex flex-col md:flex-row gap-4 items-center mt-4">
-            <a
-              href="#"
-              className="text-[#184980] underline text-sm font-medium"
-            >
-              Kebijakan Cookie
-            </a>
-            <a
-              href="#"
-              className="text-[#184980] underline text-sm font-medium"
-            >
-              Kebijakan Perlindungan Data Pribadi
-            </a>
-            <a
-              href="#"
-              className="text-[#184980] underline text-sm font-medium"
-            >
-              Ketentuan Pengguna
-            </a>
+      {/* Cookie Agreement Banner - Only render on client to avoid hydration errors */}
+      {(() => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        const [showCookie, setShowCookie] = React.useState(false);
+
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        React.useEffect(() => {
+          if (typeof window !== "undefined" && window.innerWidth >= 1024) {
+            setShowCookie(true);
+          }
+        }, []);
+
+        if (!showCookie) return null;
+
+        return (
+          <div
+            className={`flex flex-col gap-2 bg-white text-black px-24 z-[999] h-[40dvh] py-8`}
+            style={{
+              position: "fixed",
+              bottom: 0,
+              left: 0,
+            }}
+            id="cookie-agreement"
+          >
+            <h4 className="text-2xl font-semibold">Pemberitahuan</h4>
+            <span className="mr-6 text-sm">
+              Kami menggunakan cookie untuk memastikan situs ini berfungsi
+              dengan baik, menganalisis penggunaan, dan meningkatkan pengalaman
+              Anda. Dengan menyetujui cookie, Anda setuju untuk menyimpan cookie
+              selama 12 bulan pada perangkat Anda.
+            </span>
+            <div className="flex flex-col md:flex-row gap-4 items-center mt-4">
+              <a
+                href="#"
+                className="text-[#184980] underline text-sm font-medium"
+              >
+                Kebijakan Cookie
+              </a>
+              <a
+                href="#"
+                className="text-[#184980] underline text-sm font-medium"
+              >
+                Kebijakan Perlindungan Data Pribadi
+              </a>
+              <a
+                href="#"
+                className="text-[#184980] underline text-sm font-medium"
+              >
+                Ketentuan Pengguna
+              </a>
+            </div>
+            <div className="flex gap-4 mt-6">
+              <Button
+                size="md"
+                radius="none"
+                className="bg-[#184980] text-white font-semibold px-6 py-2"
+                onPress={() => {
+                  setShowCookie(false);
+                }}
+              >
+                Izinkan Semua Cookie
+              </Button>
+              <Button
+                size="md"
+                radius="none"
+                className="bg-white text-[#184980] font-semibold px-6 py-2 border border-[#184980]"
+                onPress={() => {
+                  setShowCookie(false);
+                }}
+              >
+                Izinkan Beberapa Cookie
+              </Button>
+              <Button
+                size="md"
+                radius="none"
+                className="bg-white text-[#184980] font-semibold px-6 py-2 border border-[#184980]"
+                onPress={() => {
+                  setShowCookie(false);
+                }}
+              >
+                Tolak Semua Cookie
+              </Button>
+            </div>
           </div>
-          <div className="flex gap-4 mt-6">
-            <Button
-              size="md"
-              radius="none"
-              className="bg-[#184980] text-white font-semibold px-6 py-2"
-              onPress={() => {
-                const el = document.getElementById("cookie-agreement");
-                if (el) el.style.display = "none";
-              }}
-            >
-              Izinkan Semua Cookie
-            </Button>
-            <Button
-              size="md"
-              radius="none"
-              className="bg-white text-[#184980] font-semibold px-6 py-2 border border-[#184980]"
-              onPress={() => {
-                const el = document.getElementById("cookie-agreement");
-                if (el) el.style.display = "none";
-              }}
-            >
-              Izinkan Beberapa Cookie
-            </Button>
-            <Button
-              size="md"
-              radius="none"
-              className="bg-white text-[#184980] font-semibold px-6 py-2 border border-[#184980]"
-              onPress={() => {
-                const el = document.getElementById("cookie-agreement");
-                if (el) el.style.display = "none";
-              }}
-            >
-              Tolak Semua Cookie
-            </Button>
-          </div>
-        </div>
-      )}
+        );
+      })()}
     </div>
   );
 };
