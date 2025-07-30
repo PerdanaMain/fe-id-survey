@@ -52,10 +52,10 @@ const SearchPage = () => {
   ];
 
   const { activePage, range, setPage, onNext, onPrevious } = usePagination({
-    total: 6,
+    total: 12,
     showControls: true,
-    siblings: 10,
-    boundaries: 10,
+    siblings: 4,
+    boundaries: 4,
   });
 
   return (
@@ -85,6 +85,7 @@ const SearchPage = () => {
       </div>
 
       <div className="flex flex-row mt-10 gap-4">
+        {/* Filters */}
         <div className="w-full sm:w-1/4 mr-4">
           <h2 className="text-xl font-medium mb-4">Filter</h2>
           <Accordion
@@ -117,6 +118,9 @@ const SearchPage = () => {
             </AccordionItem>
           </Accordion>
         </div>
+        {/* End Filters */}
+
+        {/* Search Results */}
         <div className="w-full sm:w-3/4">
           <h2 className="text-xl font-medium">
             Menampilkan Hasil{" "}
@@ -192,15 +196,18 @@ const SearchPage = () => {
                   <button
                     className={cn(
                       "w-full h-full bg-default-100 border border-[#184980] text-[#102441] font-semibold text-sm",
-                      activePage === page && "bg-[#184980] text-white",
+                      activePage === page && "bg-[#184980] text-white"
                     )}
                     onClick={() => setPage(page)}
-                  />
+                  >
+                    {page}
+                  </button>
                 </li>
               );
             })}
           </ul>
         </div>
+        {/* End Search Results */}
       </div>
     </div>
   );
