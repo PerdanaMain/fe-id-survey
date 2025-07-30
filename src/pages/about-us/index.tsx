@@ -5,7 +5,9 @@ import Image from 'next/image'
 function index() {
   return (
     <div>
-        <Image src={LogoColored} alt='' />
+        <nav className='bg-white h'>
+          <Image src={LogoColored} alt='' width={200} height={60} />
+        </nav>
     </div>
   )
 }
