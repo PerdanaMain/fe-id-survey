@@ -27,7 +27,7 @@ import ISO9001 from "../../public/img/iso-9001.png";
 import Kilang from "../../public/img/kilang-minyak.png";
 import Kuda from "../../public/img/kuda.png";
 import LogoGreen from "../../public/img/logo-green.png";
-import Logo from "../../public/img/logo.png";
+import Logo from "../../public/img/logo-white.png";
 import Pelabuhan from "../../public/img/pelabuhan.png";
 import Scci from "../../public/img/scci.png";
 import SMK3 from "../../public/img/smk3.png";

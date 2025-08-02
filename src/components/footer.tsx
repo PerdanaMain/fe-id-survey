@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Logo from "../../public/img/logo.png";
+import Logo from "../../public/img/logo-white.png";
 
 import {
     ChevronRight,
