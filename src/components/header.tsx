@@ -33,7 +33,7 @@ type NavLink = {
   content: {
     title: string;
     description: string;
-    services: string[];
+    services: { label: string; href: string }[];
   };
 };
 
@@ -267,11 +267,11 @@ const Header = () => {
                 {activeMegaMenu.content.services.map((service, index) => (
                   <a
                     key={index}
-                    href="#"
+                    href={service.href}
                     className="block p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 group"
                   >
                     <span className="text-[#184980] font-medium group-hover:text-[#2563eb] transition-colors">
-                      {service}
+                      {service.label}
                     </span>
                   </a>
                 ))}

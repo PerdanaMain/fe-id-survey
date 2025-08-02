@@ -1,6 +1,7 @@
 import Bki from "../../public/img/bki.png";
 import Sucofindo from "../../public/img/sucofindo.png";
 import SurveyorIndonesia from "../../public/img/surveyor-indonesia.png";
+import { solutionMenus } from "./solution-list";
 
 export const languages = [
   {
@@ -18,22 +19,18 @@ export const languages = [
 export const navLinks = [
   {
     label: "Solusi",
-    items: [
-      { label: "Solusi Bisnis", href: "#" },
-      { label: "Solusi Industri", href: "#" },
-      { label: "Solusi Digital", href: "#" },
-    ],
+    items: solutionMenus.map((solution) => ({
+      label: solution.title,
+      href: solution.url,
+    })),
     content: {
       title: "Solusi",
       description:
         "Kami mengutamakan keahlian yang relevan dan tepat guna untuk menjawab tantangan industri, memastikan setiap layanan yang kami berikan sesuai dengan standar tinggi dan kebutuhan spesifik pelanggan.",
-      services: [
-        "Transisi Energi Maritim",
-        "Transformasi Digital",
-        "Peraturan dan Keselamatan Maritim",
-        "Perancangan Kapal Inovatif",
-        "Lepas Pantai",
-      ],
+      services: solutionMenus.map((solution) => ({
+        label: solution.title,
+        href: solution.url,
+      })),
     },
   },
   {
@@ -52,13 +49,13 @@ export const navLinks = [
       description:
         "Layanan komprehensif untuk berbagai industri dengan standar internasional.",
       services: [
-        "Minyak, Gas & Energi",
-        "Mineral & Batu Bara",
-        "Transportasi & Logistik",
-        "Perdagangan",
-        "Perindustrian",
-        "Sertifikasi Sistem",
-        "Transformasi Digital",
+        { label: "Minyak, Gas & Energi", href: "#" },
+        { label: "Mineral & Batu Bara", href: "#" },
+        { label: "Transportasi & Logistik", href: "#" },
+        { label: "Perdagangan", href: "#" },
+        { label: "Perindustrian", href: "#" },
+        { label: "Sertifikasi Sistem", href: "#" },
+        { label: "Transformasi Digital", href: "#" },
       ],
     },
   },
@@ -74,11 +71,9 @@ export const navLinks = [
       description:
         "Informasi terkini dan insight industri untuk mendukung keputusan bisnis Anda.",
       services: [
-        "Berita Terkini",
-        "Galeri Proyek",
-        "Wawasan Industri",
-        "Publikasi",
-        "Event & Webinar",
+        { label: "Berita", href: "#" },
+        { label: "Galeri", href: "#" },
+        { label: "Wawasan Industri", href: "#" },
       ],
     },
   },
