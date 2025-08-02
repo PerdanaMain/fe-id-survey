@@ -1,16 +1,33 @@
 import Breadcrumb from "@/components/breadcrumb";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { solutionDetail, solutionMenus } from "@/libs/solution-list";
+import { solutionDetails, solutionMenus } from "@/libs/solution-list";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useEffect, useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+
+interface SolutionDetail {
+  url: string;
+  content: {
+    header: string;
+    body: {
+      pre: string;
+      lists: {
+        title: string;
+        description: string;
+      }[];
+    };
+  };
+}
 
 const Solutions = () => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [solutionDetail, setSolutionDetail] = useState<SolutionDetail | null>(
+    null
+  );
 
   useEffect(() => {
     const path = window.location.pathname;
@@ -18,8 +35,12 @@ const Solutions = () => {
 
     if (!validUrls.includes(path)) {
       window.location.href = "/404";
+    } else {
+      const detail = solutionDetails.find((solution) => solution.url === path);
+      setSolutionDetail(detail ?? null);
+      console.log("Solution Detail:", detail);
     }
-  }, []);
+  }, [solutionDetail]);
 
   return (
     <div>
@@ -39,7 +60,7 @@ const Solutions = () => {
             <div className="flex flex-col justify-end h-full">
               <div className="p-6 md:p-8 mt-auto">
                 <h2 className="text-white text-xl md:text-2xl lg:text-3xl font-bold leading-tight mb-12">
-                  {solutionDetail.content.header}
+                  {solutionDetail?.content.header}
                 </h2>
               </div>
             </div>
@@ -63,11 +84,11 @@ const Solutions = () => {
       <section className="container mx-auto px-6 py-12">
         <div className="space-y-6">
           <h3 className="text-xl font-normal mb-4">
-            {solutionDetail.content.body.pre}
+            {solutionDetail?.content.body.pre}
           </h3>
         </div>
 
-        {solutionDetail.content.body.lists.map((item, index) => (
+        {solutionDetail?.content.body.lists.map((item, index) => (
           <div
             className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8"
             key={index}
@@ -92,7 +113,7 @@ const Solutions = () => {
         >
           {solutionMenus.map((solution, index) => (
             <SwiperSlide key={index}>
-              <div className="mb-4 transition-colors duration-200 hover:bg-[#184980] cursor-pointer hover:text-white rounded-sm">
+              <div className="mb-4 transition-colors duration-200 hover:bg-[#184980] hover:text-white rounded-sm">
                 <Image
                   src={`/img/${solution.image}`}
                   alt={solution.title}
