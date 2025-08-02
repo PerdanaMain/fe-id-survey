@@ -1,6 +1,3 @@
-import { useDisclosure } from "@heroui/react";
-import Image from "next/image";
-import Logo from "../../public/img/logo-ids.png";
 import {
   Avatar,
   Button,
@@ -11,24 +8,23 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
-  Input,
   Navbar,
   NavbarBrand,
   NavbarContent,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
+  useDisclosure,
 } from "@heroui/react";
 import { ChevronDown, Menu, Search } from "lucide-react";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState, useRef, useEffect, MouseEvent, SetStateAction } from "react";
+import { MouseEvent, useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
+import Logo from "../../public/img/logo-ids.png";
 import {
-  languages,
-  navLinks,
   drawerLinks,
   holdingMembers,
+  languages,
+  navLinks,
 } from "../libs/header-menu-list"; // Import languages from the shared file
 
 type NavLink = {
@@ -53,11 +49,6 @@ const Header = () => {
   const router = useRouter();
 
   const {
-    isOpen: isSearchOpen,
-    onOpen: onSearchOpen,
-    onOpenChange: onSearchOpenChange,
-  } = useDisclosure();
-  const {
     isOpen: isDrawerOpen,
     onOpen: onDrawerOpen,
     onOpenChange: onDrawerOpenChange,
@@ -68,6 +59,7 @@ const Header = () => {
     navItem: NavLink,
     event: MouseEvent<HTMLDivElement>
   ) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const rect = event.currentTarget.getBoundingClientRect();
     const navbarRect = navbarRef.current?.getBoundingClientRect();
 
@@ -106,7 +98,7 @@ const Header = () => {
       <Navbar
         ref={navbarRef}
         position="static"
-        className="bg-white shadow-md py-2 fixed top-0 z-[1000] hover:bg-white/95 backdrop-blur-md"
+        className="bg-transparent shadow-md py-2 fixed top-0 z-[1000] hover:bg-white/95 backdrop-blur-md"
       >
         <NavbarBrand
           className="hover:cursor-pointer"
@@ -138,7 +130,7 @@ const Header = () => {
             <DropdownTrigger>
               <Button
                 variant="light"
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 hover:bg-none"
                 radius="full"
               >
                 <Avatar
@@ -169,32 +161,16 @@ const Header = () => {
               ))}
             </DropdownMenu>
           </Dropdown>
-          <Popover
-            isOpen={isSearchOpen}
-            onOpenChange={onSearchOpenChange}
-            placement="bottom-end"
+          <Button
+            isIconOnly
+            variant="light"
+            radius="full"
+            aria-label="Search"
+            className="text-[#184980]"
+            onPress={() => router.push("/search")}
           >
-            <PopoverTrigger>
-              <Button
-                isIconOnly
-                variant="light"
-                radius="full"
-                aria-label="Search"
-                className="text-[#184980]"
-                onPress={onSearchOpen}
-              >
-                <Search size={20} />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="p-4 min-w-[300px]">
-              <Input
-                autoFocus
-                placeholder="Cari di IDSurvey..."
-                startContent={<Search size={18} />}
-                className="w-full"
-              />
-            </PopoverContent>
-          </Popover>
+            <Search size={20} />
+          </Button>
           <Button
             isIconOnly
             variant="light"
@@ -287,23 +263,18 @@ const Header = () => {
               </div>
 
               {/* Right side - Services */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-[#184980] mb-4">
-                  Layanan Utama
-                </h3>
-                <div className="grid gap-3">
-                  {activeMegaMenu.content.services.map((service, index) => (
-                    <a
-                      key={index}
-                      href="#"
-                      className="block p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 group"
-                    >
-                      <span className="text-[#184980] font-medium group-hover:text-[#2563eb] transition-colors">
-                        {service}
-                      </span>
-                    </a>
-                  ))}
-                </div>
+              <div className="grid gap-3">
+                {activeMegaMenu.content.services.map((service, index) => (
+                  <a
+                    key={index}
+                    href="#"
+                    className="block p-3 rounded-lg hover:bg-gray-50 transition-colors duration-200 group"
+                  >
+                    <span className="text-[#184980] font-medium group-hover:text-[#2563eb] transition-colors">
+                      {service}
+                    </span>
+                  </a>
+                ))}
               </div>
             </div>
           </div>
