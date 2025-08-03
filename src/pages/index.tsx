@@ -2,6 +2,7 @@
 
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import { serviceMenus } from "@/libs/service-list";
 import { Tab, Tabs } from "@heroui/react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
@@ -9,10 +10,6 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ACS from "../../public/img/acs.png";
 import Bki from "../../public/img/bki.png";
-import Digital from "../../public/img/digital.png";
-import Diskusi from "../../public/img/diskusi.png";
-import Gudang from "../../public/img/gudang.png";
-import Industri from "../../public/img/industri.png";
 import IPERINDO from "../../public/img/iperindo.png";
 import ISO14001 from "../../public/img/iso-14001.png";
 import ISO17020 from "../../public/img/iso-17020.png";
@@ -24,11 +21,9 @@ import ISO37001 from "../../public/img/iso-37001.png";
 import ISO45001 from "../../public/img/iso-45001.png";
 import ISO90012015 from "../../public/img/iso-9001-2015.png";
 import ISO9001 from "../../public/img/iso-9001.png";
-import Kilang from "../../public/img/kilang-minyak.png";
 import Kuda from "../../public/img/kuda.png";
 import LogoGreen from "../../public/img/logo-green.png";
 import Logo from "../../public/img/logo-white.png";
-import Pelabuhan from "../../public/img/pelabuhan.png";
 import Scci from "../../public/img/scci.png";
 import SMK3 from "../../public/img/smk3.png";
 import SucofindoAdvisory from "../../public/img/sucofindo-advisory.png";
@@ -36,11 +31,11 @@ import SucofindoEpsi from "../../public/img/sucofindo-epsi.png";
 import Sucofindo from "../../public/img/sucofindo.png";
 import SurveyorIndonesia from "../../public/img/surveyor-indonesia.png";
 import Synerga from "../../public/img/synerga.png";
-import Tambang from "../../public/img/tambang.png";
 
 // Import Swiper styles
 import Cookie from "@/components/cookie";
 import { Button } from "@heroui/react";
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -155,44 +150,6 @@ const akreditasi = [
   },
 ];
 
-const listLayanan = [
-  {
-    title: "Minyak, Gas & Energi",
-    image: Kilang,
-    link: "#",
-  },
-  {
-    title: "Mineral & Batu Bara",
-    image: Tambang,
-    link: "#",
-  },
-  {
-    title: "Transportasi & Logistik",
-    image: Gudang,
-    link: "#",
-  },
-  {
-    title: "Perdagangan",
-    image: Pelabuhan,
-    link: "#",
-  },
-  {
-    title: "Perindustrian",
-    image: Industri,
-    link: "#",
-  },
-  {
-    title: "Sertifikasi Sistem",
-    image: Diskusi,
-    link: "#",
-  },
-  {
-    title: "Transformasi Digital",
-    image: Digital,
-    link: "#",
-  },
-];
-
 const berita = [
   {
     title:
@@ -278,15 +235,15 @@ const Home = () => {
         </div>
         {/* Right: listLayanan */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center justify-center w-full">
-          {listLayanan.map((layanan, index) => (
-            <a
+          {serviceMenus.slice(0, 7).map((layanan, index) => (
+            <Link
               key={index}
-              href={layanan.link}
+              href={layanan.url}
               className="group grid grid-cols-3 w-full hover:opacity-55 transition-opacity duration-300 ease-linear"
             >
               <div className="col-span-1 h-[16dvh] w-full relative">
                 <Image
-                  src={layanan.image}
+                  src={`/img/${layanan.image}`}
                   alt={layanan.title}
                   fill
                   style={{ objectFit: "cover" }}
@@ -294,18 +251,20 @@ const Home = () => {
               </div>
               <div className="col-span-2 bg-white/25 flex items-center justify-start p-4">
                 <h3 className="text-white text-base font-semibold">
-                  {layanan.title}
+                  {layanan.title.length > 30
+                    ? layanan.title.slice(0, 30) + "..."
+                    : layanan.title}
                 </h3>
               </div>
-            </a>
+            </Link>
           ))}
-          <a
-            href="#"
+          <Link
+            href="/service-list"
             className="bg-[#00B0A8] w-full h-[16dvh] flex items-center justify-center font-medium text-white text-base translate-y-4 md:translate-y-0 hover:opacity-55 transition-opacity duration-300 ease-linear"
           >
             Lihat Layanan Lainnya
             <ArrowRight className="ml-2" size={20} />
-          </a>
+          </Link>
         </div>
       </section>
       <section className="px-8 md:px-24 my-8 md:mt-24">

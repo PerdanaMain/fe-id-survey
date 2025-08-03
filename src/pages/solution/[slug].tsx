@@ -5,6 +5,7 @@ import { solutionDetails, solutionMenus } from "@/libs/solution-list";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -28,19 +29,21 @@ const Solutions = () => {
   const [solutionDetail, setSolutionDetail] = useState<SolutionDetail | null>(
     null
   );
+  const router = useRouter();
 
   useEffect(() => {
     const path = window.location.pathname;
+    const paths = path.split("/").slice(1);
+    console.log("Current Paths:", paths);
     const validUrls = solutionMenus.map((menu) => menu.url);
 
     if (!validUrls.includes(path)) {
-      window.location.href = "/404";
+      router.push("/404");
     } else {
       const detail = solutionDetails.find((solution) => solution.url === path);
       setSolutionDetail(detail ?? null);
-      console.log("Solution Detail:", detail);
     }
-  }, [solutionDetail]);
+  }, [router, solutionDetail]);
 
   return (
     <div>
@@ -105,9 +108,8 @@ const Solutions = () => {
         <Swiper
           spaceBetween={15}
           slidesPerView={4}
-          onSlideChange={() => console.log("slide change")}
           onSwiper={(swiper) => {
-            console.log(swiper);
+            // console.log(swiper);
             swiperRef.current = swiper;
           }}
         >

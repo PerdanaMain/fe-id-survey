@@ -2,6 +2,7 @@ import Bki from "../../public/img/bki.png";
 import Sucofindo from "../../public/img/sucofindo.png";
 import SurveyorIndonesia from "../../public/img/surveyor-indonesia.png";
 import { solutionMenus } from "./solution-list";
+import { serviceMenus } from "./service-list";
 
 export const languages = [
   {
@@ -35,28 +36,18 @@ export const navLinks = [
   },
   {
     label: "Layanan",
-    items: [
-      { label: "Minyak, Gas & Energi", href: "#" },
-      { label: "Mineral & Batu Bara", href: "#" },
-      { label: "Transportasi & Logistik", href: "#" },
-      { label: "Perdagangan", href: "#" },
-      { label: "Perindustrian", href: "#" },
-      { label: "Sertifikasi Sistem", href: "#" },
-      { label: "Transformasi Digital", href: "#" },
-    ],
+    items: serviceMenus.map((service) => ({
+      label: service.title,
+      href: service.url,
+    })),
     content: {
       title: "Layanan",
       description:
         "Layanan komprehensif untuk berbagai industri dengan standar internasional.",
-      services: [
-        { label: "Minyak, Gas & Energi", href: "#" },
-        { label: "Mineral & Batu Bara", href: "#" },
-        { label: "Transportasi & Logistik", href: "#" },
-        { label: "Perdagangan", href: "#" },
-        { label: "Perindustrian", href: "#" },
-        { label: "Sertifikasi Sistem", href: "#" },
-        { label: "Transformasi Digital", href: "#" },
-      ],
+      services: serviceMenus.map((service) => ({
+        label: service.title,
+        href: service.url,
+      })),
     },
   },
   {

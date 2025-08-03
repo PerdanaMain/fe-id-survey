@@ -263,7 +263,13 @@ const Header = () => {
               </div>
 
               {/* Right side - Services */}
-              <div className="grid gap-3">
+              <div
+                className={`grid ${
+                  activeMegaMenu.content.services.length > 5
+                    ? "grid-cols-2"
+                    : "grid-cols-1"
+                } gap-3`}
+              >
                 {activeMegaMenu.content.services.map((service, index) => (
                   <a
                     key={index}
