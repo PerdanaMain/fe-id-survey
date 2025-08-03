@@ -33,8 +33,8 @@ const Solutions = () => {
 
   useEffect(() => {
     const path = window.location.pathname;
-    const paths = path.split("/").slice(1);
-    console.log("Current Paths:", paths);
+    // const paths = path.split("/").slice(1);
+    // console.log("Current Paths:", paths);
     const validUrls = solutionMenus.map((menu) => menu.url);
 
     if (!validUrls.includes(path)) {
