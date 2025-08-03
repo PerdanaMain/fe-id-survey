@@ -20,6 +20,7 @@ import { MouseEvent, useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import Logo from "../../public/img/logo-ids.png";
+import LogoWhite from "../../public/img/logo-white.png";
 import {
   drawerLinks,
   holdingMembers,
@@ -37,7 +38,14 @@ type NavLink = {
   };
 };
 
-const Header = () => {
+interface HeaderProps {
+  transparent?: boolean;
+}
+
+const Header = ({ transparent = true }: HeaderProps) => {
+  const [bgNav, setBgNav] = useState(
+    transparent ? "bg-transparent" : "bg-white"
+  );
   const [lang, setLang] = useState(languages[0]);
   const [activeMegaMenu, setActiveMegaMenu] = useState<NavLink | null>(null);
   const [megaMenuPosition, setMegaMenuPosition] = useState({
@@ -70,10 +78,26 @@ const Header = () => {
     setActiveMegaMenu(navItem);
   };
 
+  const handleMouseEnterNavbar = (event: MouseEvent<HTMLElement>) => {
+    if (transparent) {
+      setBgNav("bg-white/95");
+    }
+  };
+
+  const handleMouseLeaveNavbar = () => {
+    if (transparent) {
+      setBgNav("bg-transparent");
+    }
+    setActiveMegaMenu(null);
+  };
+
   const handleMouseLeave = () => {
     // Add small delay to prevent flickering
     setTimeout(() => {
-      if (!megaMenuRef.current?.matches(":hover")) {
+      if (
+        !megaMenuRef.current?.matches(":hover") &&
+        !document.activeElement?.isSameNode(megaMenuRef.current)
+      ) {
         setActiveMegaMenu(null);
       }
     }, 100);
@@ -98,13 +122,19 @@ const Header = () => {
       <Navbar
         ref={navbarRef}
         position="static"
-        className="bg-transparent shadow-md py-2 fixed top-0 z-[1000] hover:bg-white/95 backdrop-blur-md"
+        className={`${bgNav} shadow-md py-2 fixed top-0 z-[1000] hover:bg-white/95`}
+        onMouseEnter={(e) => handleMouseEnterNavbar(e)}
+        onMouseLeave={handleMouseLeaveNavbar}
       >
         <NavbarBrand
           className="hover:cursor-pointer"
           onClick={() => router.push("/")}
         >
-          <Image src={Logo} alt="IDSurvey Logo" height={40} />
+          <Image
+            src={bgNav === "bg-transparent" ? LogoWhite : Logo}
+            alt="IDSurvey Logo"
+            height={40}
+          />
         </NavbarBrand>
         <NavbarContent className="hidden md:flex gap-4" justify="center">
           {navLinks.map((nav) => (
@@ -116,7 +146,9 @@ const Header = () => {
             >
               <Button
                 variant="light"
-                className="flex items-center gap-2 text-[#184980] font-semibold hover:text-[#2563eb]"
+                className={`flex items-center gap-2 font-semibold ${
+                  bgNav === "bg-transparent" ? "text-white" : "text-[#184980]"
+                } hover:bg-white/80`}
                 radius="none"
               >
                 {nav.label}
@@ -130,7 +162,9 @@ const Header = () => {
             <DropdownTrigger>
               <Button
                 variant="light"
-                className="flex items-center gap-2 hover:bg-none"
+                className={`flex items-center gap-2 ${
+                  bgNav === "bg-transparent" ? "text-white" : "text-[#184980]"
+                } hover:bg-white/80`}
                 radius="full"
               >
                 <Avatar
@@ -166,7 +200,7 @@ const Header = () => {
             variant="light"
             radius="full"
             aria-label="Search"
-            className="text-[#184980]"
+            className={bgNav === "bg-transparent" ? "text-white" : "text-[#184980]"}
             onPress={() => router.push("/search")}
           >
             <Search size={20} />
@@ -176,7 +210,7 @@ const Header = () => {
             variant="light"
             radius="full"
             aria-label="Menu"
-            className="text-[#184980]"
+            className={bgNav === "bg-transparent" ? "text-white" : "text-[#184980]"}
             onPress={onDrawerOpen}
           >
             <Menu size={24} />

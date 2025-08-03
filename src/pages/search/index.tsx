@@ -62,7 +62,7 @@ const SearchPage = () => {
 
   return (
     <>
-      <Header />
+      <Header transparent={false} />
       <div className="container mx-auto px-32 my-6">
         <Breadcrumbs>
           <BreadcrumbItem>Beranda</BreadcrumbItem>
@@ -166,7 +166,7 @@ const SearchPage = () => {
                   return (
                     <li key={page} aria-label="next page" className="w-7 h-7">
                       <button
-                        className="w-full h-full bg-white border border-[#184980]"
+                        className="w-full h-full bg-white border border-[#184980] cursor-pointer"
                         onClick={onNext}
                       >
                         <ChevronRight className="text-[#102441] font-semibold text-sm" />
@@ -179,7 +179,7 @@ const SearchPage = () => {
                   return (
                     <li key={page} aria-label="next page" className="w-7 h-7">
                       <button
-                        className="w-full h-full bg-white border border-[#184980]"
+                        className="w-full h-full bg-white border border-[#184980] cursor-pointer"
                         onClick={onPrevious}
                       >
                         <ChevronLeft className="text-[#102441] font-semibold text-sm" />

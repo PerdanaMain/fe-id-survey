@@ -2,6 +2,7 @@ import Breadcrumb from "@/components/breadcrumb";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { serviceMenus } from "@/libs/service-list";
+import Link from "next/link";
 
 const ServiceList = () => {
   return (
@@ -27,16 +28,18 @@ const ServiceList = () => {
           </div>
         </div>
       </section>
-
-      <section className="transform translate-y-8 md:translate-y-16 lg:translate-y-20 z-20 mt-[-40vh] md:mt-[-55vh]">
-        <div className="container mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-4">
+      <section className="z-20 mt-[-40vh] md:mt-[-45vh]">
+        <div className="container mx-auto px-4 py-8 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-4 ">
             {serviceMenus.slice(0, 3).map((service, index) => (
               <a
                 href={service.url}
                 key={index}
-                className="w-full p-6 flex-col items-start justify-center md:justify-end bg-cover md:h-[45dvh] bg-no-repeat text-white relative flex group overflow-hidden"
-                style={{ backgroundImage: `url('/img/${service.image}')` }}
+                className="w-full p-6 flex flex-col items-start justify-center md:justify-end bg-cover md:h-[45dvh] bg-no-repeat text-white relative group overflow-hidden z-30"
+                style={{
+                  backgroundImage: `url('/img/${service.image}')`,
+                  pointerEvents: "auto",
+                }}
               >
                 <div className="absolute inset-0 pointer-events-none bg-black/20 z-10"></div>
                 <div
@@ -59,7 +62,7 @@ const ServiceList = () => {
             {serviceMenus
               .slice(3, serviceMenus.length)
               .map((service, index) => (
-                <a
+                <Link
                   href={service.url}
                   key={index}
                   className="w-full p-6 flex flex-col items-start justify-center md:justify-end bg-cover md:h-[45dvh] bg-no-repeat text-white relative group overflow-hidden"
@@ -79,12 +82,11 @@ const ServiceList = () => {
                       ? service.title.slice(0, 30) + "..."
                       : service.title}
                   </h4>
-                </a>
+                </Link>
               ))}
           </div>
         </div>
       </section>
-      <section className="container mx-auto px-2 sm:px-6 py-2 sm:py-12 flex items-center justify-center" />
       <Footer />
     </div>
   );

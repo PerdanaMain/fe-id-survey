@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { serviceMenus } from "@/libs/service-list";
 import { Tab, Tabs } from "@heroui/react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -33,11 +33,12 @@ import SurveyorIndonesia from "../../public/img/surveyor-indonesia.png";
 import Synerga from "../../public/img/synerga.png";
 
 // Import Swiper styles
-import Cookie from "@/components/cookie";
 import { Button } from "@heroui/react";
 import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
+import type { Swiper as SwiperType } from "swiper";
+import { useRef } from "react";
 
 const holdingMembers = [
   {
@@ -208,10 +209,12 @@ const seputarIndustri = [
 ];
 
 const Home = () => {
+  const swiperRef = useRef<SwiperType | null>(null);
+
   return (
     <div>
       <Header />
-      <section className="grid grid-cols-1 md:grid-cols-2 items-start justify-start pt-8 px-8 md:px-24  min-h-screen md:min-h-[90vh] bg-[url('/img/bg-tulis.png')] bg-cover bg-center gap-8 md:pt-24">
+      <section className="grid grid-cols-1 md:grid-cols-2 items-start justify-start pt-8 px-8 md:px-24  min-h-screen md:min-h-[90vh] bg-[url('/img/bg-hero-landing.png')] bg-cover bg-center gap-8 md:pt-24">
         {/* Left: Hero */}
         <div className="flex flex-col items-center justify-center md:justify-start space-y-8">
           <Image
@@ -274,12 +277,12 @@ const Home = () => {
         </div>
         <div className="mt-8 flex flex-col items-start justify-start md:flex-row md:gap-8">
           <div className="hidden md:flex md:flex-col min-w-[20dvw]">
-            <p className="text-[#00B0A8] ">Profil</p>
-            <h3 className="text-[#070707] text-2xl font-semibold md:font-bold ">
+            <p className="text-[#00B0A8] font-semibold">Profil</p>
+            <h2 className="text-[#070707] text-2xl font-semibold md:font-bold ">
               Holding Perusahaan Survei Indonesia
-            </h3>
+            </h2>
           </div>
-          <p className="text-[#070707] text-sm font-light mt-6 text-justify">
+          <p className="text-[#070707] text-sm font-normal mt-6 px-1 text-justify">
             PT Inspeksi Sertifikasi dan Survey Indonesia (IDSurvey) resmi
             terbentuk pada 27 Maret 2025 sebagai Holding BUMN Jasa Survei.
             Sucofindo memimpin bisnis TIC di sektor pertambangan, Surveyor
@@ -288,7 +291,7 @@ const Home = () => {
           </p>
           <a href="#">
             <Button
-              className="mt-6 text-[#184980] border-[#184980] text-sm"
+              className="mt-6 text-[#184980] border-[#184980] text-sm font-semibold max-w-sm"
               size="lg"
               radius="none"
               variant="bordered"
@@ -299,13 +302,25 @@ const Home = () => {
         </div>
         <div className="w-full relative">
           <div className="mt-8 mb-10 md:mt-16">
-            <h3 className="text-[#070707] text-lg md:text-xl md:font-sembold">
+            <h3 className="text-[#070707] text-lg md:text-xl md:font-semibold">
               Akreditasi dan Asosiasi
             </h3>
           </div>
           <div className="absolute top-6 right-0 flex justify-between items-center w-24 z-50">
-            <div className="swiper-button-next  !text-black after:!text-xs !h-8 md:!h-16 md:px-8  after:!border-[#184980] border-1 px-4 flex items-center justify-center  bg-white transition-colors duration-200 disabled:bg-gray-300 "></div>
-            <div className="swiper-button-prev  !text-black after:!text-xs !h-8 md:!h-16 md:px-8 md:-translate-x-24 after:!border-[#184980] border-1 px-4 flex items-center justify-center  bg-white transition-colors duration-200 disabled:bg-gray-300"></div>
+            <div className="flex items-center justify-center gap-2">
+              <button
+                className="py-1 px-2 bg-white hover:bg-gray-100 border cursor-pointer"
+                onClick={() => swiperRef.current?.slidePrev()}
+              >
+                <ChevronLeft className="inline" />
+              </button>
+              <button
+                className="py-1 px-2 bg-white hover:bg-gray-100 border cursor-pointer"
+                onClick={() => swiperRef.current?.slideNext()}
+              >
+                <ChevronRight className="inline" />
+              </button>
+            </div>
           </div>
           <Swiper
             slidesPerView={
@@ -318,6 +333,9 @@ const Home = () => {
                 ? 30
                 : 10
             }
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
             slidesOffsetBefore={10}
             autoplay
             modules={[Navigation]}
@@ -415,7 +433,7 @@ const Home = () => {
       </section>
       <section className="px-8 md:px-24 mt-12 mb-8">
         <div className="mt-8">
-          <p className="text-[#00B0A8]">Laporan</p>
+          <p className="text-[#00B0A8] font-semibold">Laporan</p>
           <h3 className="text-[#070707] text-2xl md:text-4xl font-bold">
             Kinerja Keuangan dan Pencapaian Tahun 2024
           </h3>
@@ -427,29 +445,43 @@ const Home = () => {
                 <br />
                 819.125
               </p>
-              <span className="text-xs">Total Pendapatan</span>
+              <span className="text-sm font-semibold">Total Pendapatan</span>
             </div>
             <div className="bg-[#184980] p-4 min-h-[25dvh] text-white flex flex-col justify-end items-start ">
               <p className="text-lg md:text-4xl md:mb-4 font-semibold ">144</p>
-              <span className="text-xs">Cabang Domestik</span>
+              <span className="text-sm font-semibold">Cabang Domestik</span>
             </div>
             <div className="bg-[#00B0A8] p-4 min-h-[25dvh] text-white flex flex-col justify-end items-start ">
               <p className="text-lg md:text-4xl md:mb-4 font-semibold ">12</p>
-              <span className="text-xs">Cabang Internasional</span>
+              <span className="text-sm font-semibold">
+                Cabang Internasional
+              </span>
             </div>
             <div className="bg-[#184980] p-4 min-h-[25dvh] text-white flex flex-col justify-end items-start ">
               <p className="text-lg md:text-4xl md:mb-4 font-semibold ">87</p>
-              <span className="text-xs">Laboratorium</span>
+              <span className="text-sm font-semibold">Laboratorium</span>
             </div>
           </div>
         </div>
       </section>
       <section className="px-8 md:px-24 mt-12 mb-8">
-        <div className="mt-8">
-          <p className="text-[#00B0A8]">Media</p>
-          <h3 className="text-[#070707] text-2xl md:text-4xl font-bold">
-            Kabar Terkini
-          </h3>
+        <div className="flex flex-row mt-8 items-center justify-between">
+          <div className="mt-8">
+            <p className="text-[#00B0A8] font-semibold">Media</p>
+            <h3 className="text-[#070707] text-2xl md:text-4xl font-bold">
+              Kabar Terkini
+            </h3>
+          </div>
+          <a href="#">
+            <Button
+              className="mt-6 text-[#184980] border-[#184980] text-sm font-semibold max-w-sm"
+              size="lg"
+              radius="none"
+              variant="bordered"
+            >
+              Lihat Semua Media
+            </Button>
+          </a>
         </div>
         <Tabs
           key={`media`}
@@ -459,7 +491,7 @@ const Home = () => {
             typeof window !== "undefined" ? window.innerWidth < 768 : true
           }
           classNames={{
-            tab: "md:text-lg md:px-8 md:py-4 text-base px-4 py-2",
+            tab: "md:text-lg md:px-8 md:py-8 text-base px-4 py-2 font-semibold",
             tabList: "md:gap-8 gap-2",
           }}
         >
@@ -641,7 +673,6 @@ const Home = () => {
         </Button>
       </section>
       <Footer />
-      <Cookie />
     </div>
   );
 };
