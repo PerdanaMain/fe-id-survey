@@ -221,7 +221,7 @@ const Home = () => {
             src={Logo}
             alt="Logo of ID Survey"
             height={60}
-            className="block md:hidden"
+            className="block md:hidden lg:mt-0 mt-24"
           />
           <div className="w-full h-[65dvh] md:h-[95vh] mx-4 bg-[#184980] relative px-6 py-8 overflow-hidden flex items-center justify-center md:items-start md:px-20 md:py-16 md:z-50 md:-mb-16">
             <h2 className="text-white font-bold text-3xl md:text-7xl leading-tight z-50 relative text-center md:text-start">
