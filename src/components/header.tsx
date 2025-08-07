@@ -126,17 +126,16 @@ const Header = ({ transparent = true }: HeaderProps) => {
         onMouseEnter={(e) => handleMouseEnterNavbar(e)}
         onMouseLeave={handleMouseLeaveNavbar}
       >
-        <NavbarBrand
-          className="hover:cursor-pointer"
-          onClick={() => router.push("/")}
-        >
+        <NavbarBrand className="max-w-[170px]">
           <Image
             src={bgNav === "bg-transparent" ? LogoWhite : Logo}
             alt="IDSurvey Logo"
             height={40}
+            className="hover:cursor-pointer"
+            onClick={() => router.push("/")}
           />
         </NavbarBrand>
-        <NavbarContent className="hidden md:flex gap-4" justify="center">
+        <NavbarContent className="hidden md:flex gap-4" justify="start">
           {navLinks.map((nav) => (
             <div
               key={nav.label}
@@ -200,7 +199,9 @@ const Header = ({ transparent = true }: HeaderProps) => {
             variant="light"
             radius="full"
             aria-label="Search"
-            className={bgNav === "bg-transparent" ? "text-white" : "text-[#184980]"}
+            className={
+              bgNav === "bg-transparent" ? "text-white" : "text-[#184980]"
+            }
             onPress={() => router.push("/search")}
           >
             <Search size={20} />
@@ -210,7 +211,9 @@ const Header = ({ transparent = true }: HeaderProps) => {
             variant="light"
             radius="full"
             aria-label="Menu"
-            className={bgNav === "bg-transparent" ? "text-white" : "text-[#184980]"}
+            className={
+              bgNav === "bg-transparent" ? "text-white" : "text-[#184980]"
+            }
             onPress={onDrawerOpen}
           >
             <Menu size={24} />
