@@ -1,6 +1,7 @@
 "use client";
 
 // import Breadcrumb from "@/components/breadcrumb";
+import "next-i18next"
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import React from "react";
