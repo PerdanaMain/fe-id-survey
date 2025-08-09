@@ -86,13 +86,15 @@ const ServiceDetail = () => {
         </div>
 
         <div className="relative overflow-hidden">
-          <Image
-            src="/img/service-1.png"
-            alt="Oil & Gas Platform"
-            width={500}
-            height={500}
-            className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-700"
-          />
+          {serviceDetail?.image && (
+            <Image
+              src={`/img/${serviceDetail.image}`}
+              alt="Oil & Gas Platform"
+              width={500}
+              height={500}
+              className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-700"
+            />
+          )}
         </div>
       </section>
 
