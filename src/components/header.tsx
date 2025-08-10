@@ -78,6 +78,7 @@ const Header = ({ transparent = true }: HeaderProps) => {
     setActiveMegaMenu(navItem);
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handleMouseEnterNavbar = (event: MouseEvent<HTMLElement>) => {
     if (transparent) {
       setBgNav("bg-white/95");
@@ -282,7 +283,7 @@ const Header = ({ transparent = true }: HeaderProps) => {
           <>
             <div
               ref={megaMenuRef}
-              className="fixed left-0 right-0 bottom-0  bg-white shadow-lg border-t border-gray-200 z-[999] animate-in slide-in-from-bottom-2 duration-200"
+              className="fixed left-0 right-0 mt-16 bg-white shadow-lg border-t border-gray-200 z-[999] animate-in slide-in-from-bottom-2 duration-200"
               style={{
                 left: megaMenuPosition.left,
                 width: megaMenuPosition.width,

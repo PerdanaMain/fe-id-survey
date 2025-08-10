@@ -3,6 +3,7 @@ import Sucofindo from "../../public/img/sucofindo.png";
 import SurveyorIndonesia from "../../public/img/surveyor-indonesia.png";
 import { solutionMenus } from "./solution-list";
 import { serviceMenus } from "./service-list";
+import { knowledges } from "./media-list";
 
 export const languages = [
   {
@@ -44,7 +45,7 @@ export const navLinks = [
       title: "Layanan",
       description:
         "Layanan komprehensif untuk berbagai industri dengan standar internasional.",
-      services: serviceMenus.map((service) => ({
+      services: serviceMenus.slice(0,3).map((service) => ({
         label: service.title,
         href: service.url,
       })),
@@ -61,11 +62,11 @@ export const navLinks = [
       title: "Wawasan",
       description:
         "Informasi terkini dan insight industri untuk mendukung keputusan bisnis Anda.",
-      services: [
-        { label: "Berita", href: "#" },
-        { label: "Galeri", href: "#" },
-        { label: "Wawasan Industri", href: "#" },
-      ],
+      services: knowledges.slice(0, 3).map((item) => ({
+        label: item.title,
+        href: item.link,
+        image: item.image,
+      })),
     },
   },
 ];
