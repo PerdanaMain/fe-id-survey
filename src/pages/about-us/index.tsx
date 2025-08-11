@@ -2,6 +2,7 @@ import React from "react";
 import Header from "@/components/header";
 import Image from "next/image";
 
+import IDSurveyLogo from "../../../public/img/logo-ids.png";
 import IDSurveyBuilding from "../../../public/img/idsurvey-building.png";
 
 import Iso9001Komersil from "../../../public/img/iso-9001-2015.png";
@@ -86,16 +87,23 @@ function index() {
   return (
     <div>
       <Header transparent={false} />
-      <header className="mt-20">
+
+      {/* mobile only heading */}
+      <div className="flex flex-col gap-4 p-6 sm:hidden">
+        <Image src={IDSurveyLogo} alt="" className="sm:hidden" height={36}/>
+        <p className="text-xs">Beranda&nbsp;&nbsp;/&nbsp;&nbsp;Profil Perusahaan</p>
+      </div>
+
+      <header className="sm:mt-20">
         <section className="bg-[#184980] flex justify-between items-center">
           {/* Left: your two lines of text */}
-          <div className="text-white min-h-72 flex flex-col justify-between pl-24 pb-10">
-            <p className="text-sm">Beranda / Profil Perusahaan</p>
-            <h1 className="text-5xl font-bold">Tentang Kami</h1>
+          <div className="text-white sm:min-h-72 min-h-64 flex flex-col justify-between sm:pl-24 sm:pb-10 pb-6 pl-6">
+            <p className="text-sm hidden sm:block">Beranda / Profil Perusahaan</p>
+            <h1 className="text-4xl sm:text-5xl font-bold mt-auto">Tentang Kami</h1>
           </div>
 
           {/* Right: fixed-size image that won’t shrink */}
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 hidden sm:block">
             <Image
               src={IDSurveyBuilding}
               alt="IDSurvey Building"
@@ -105,17 +113,21 @@ function index() {
             />
           </div>
         </section>
+
+        {/* mobile only image */}
+        <Image src={IDSurveyBuilding} alt="" className="sm:hidden h-40 object-cover object-center" />
+
       </header>
 
       {/* Profil Perusahaan */}
-      <section className="px-24 my-11 flex flex-col gap-15">
-        <h1 className="text-[#00B0A8] font-bold text-4xl">Profil Perusahaan</h1>
+      <section className="sm:px-24 px-8 my-11 flex flex-col gap-11 sm:gap-15">
+        <h1 className="text-[#00B0A8] font-bold text-2xl sm:text-4xl">Profil Perusahaan</h1>
 
-        <div className="flex flex-wrap justify-between gap-15">
+        <div className="flex flex-wrap justify-between gap-5 sm:gap-15">
           <h2 className="text-[#070707] text-2xl font-bold text-nowrap w-96">
             Kami Adalah IDSurvey
           </h2>
-          <p className="text-xl break-words flex-1 whitespace-normal">
+          <p className="sm:text-xl text-base break-words sm:flex-1 whitespace-normal">
             PT Inspeksi Sertifikasi Dan Survey Indonesia atau disebut juga
             IDSurvey, resmi terbentuk pada 27 Maret 2025, selaku Holding BUMN
             Jasa Survei. <br />
@@ -147,7 +159,7 @@ function index() {
           <br />
         </div>
 
-        <div className="flex gap-15">
+        <div className="flex sm:gap-15 gap-5 flex-wrap md:flex-nowrap">
           <h2 className="text-[#070707] text-2xl text-nowrap font-bold min-w-96">
             Akreditasi dan Asosiasi
           </h2>
@@ -171,48 +183,48 @@ function index() {
           </div>
         </div>
 
-        <div className="flex gap-15">
+        <div className="flex gap-5 flex-wrap sm:gap-15">
           <h2 className="text-[#070707] text-2xl font-bold min-w-96">
             Dokumen
           </h2>
           <div>
             <a href="#" className="flex gap-4 text-xl font-semibold">
               <FileText className="text-[#184980]" />
-              <p className="text-[#184980]">Salinan PP Nomor 66 Tahun 2021</p>
+              <p className="text-[#184980] text-base sm:text-xl">Salinan PP Nomor 66 Tahun 2021</p>
             </a>
           </div>
         </div>
       </section>
 
-      <div className="px-24">
+      <div className="sm:px-24 px-10">
         <hr className="w-full border-[#D1D1D1]" />
       </div>
 
       {/* VISI MISI */}
-      <section className="px-24 my-11 flex flex-col gap-15">
-        <h1 className="text-[#00B0A8] font-bold text-4xl">
+      <section className="sm:px-24  px-8 my-11 flex flex-col gap-11 sm:gap-15">
+        <h1 className="text-[#00B0A8] font-bold text-2xl sm:text-4xl">
           Visi & Misi Perusahaan
         </h1>
 
-        <div className="flex justify-between gap-12">
-          <div className="flex flex-col w-1/2">
-            <h2 className="text-2xl text-[#070707] font-bold mb-2">
+        <div className="flex flex-wrap md:flex-nowrap justify-between gap-12">
+          <div className="flex flex-col sm:w-1/2">
+            <h2 className="text-2xl text-[#070707] text-nowrap font-bold mb-2">
               Visi Perusahaan
             </h2>
-            <p className="text-xl">
+            <p className="text-base sm:text-xl">
               Menjadi perusahaan jasa penjamin terintegrasi kelas dunia dan
               berperan memperkuat bangsa melalui peningkatan kepercayaan.
             </p>
           </div>
 
-          <div className="flex flex-col w-1/2">
+          <div className="flex flex-col sm:w-1/2">
             <h2 className="text-2xl text-[#070707] font-bold mb-2">
               Misi Perusahaan
             </h2>
             <div className="pl-2">
               <div className="flex gap-3">
-                <p className="text-xl">1. </p>
-                <p className="text-wrap text-xl">
+                <p className="text-base sm:text-xl">1. </p>
+                <p className="text-wrap text-base sm:text-xl">
                   Menyediakan jasa yang komprehensif dan terpercaya dengan
                   memperkuat kapasitas dan kapabilitas terkait sumber daya
                   manusia, teknologi, dan inovasi melalui sinergi dan integrasi
@@ -221,8 +233,8 @@ function index() {
               </div>
 
               <div className="flex gap-2">
-                <p className="text-xl">2. </p>
-                <p className="text-wrap text-xl">
+                <p className="text-base sm:text-xl">2. </p>
+                <p className="text-wrap text-base sm:text-xl">
                   Memberikan nilai tambah kepada pemangku kepentingan melalui
                   standarisasi mutu, peningkatan efisiensi, keselamatan, dan
                   keamanan.
@@ -230,8 +242,8 @@ function index() {
               </div>
 
               <div className="flex gap-2">
-                <p className="text-xl">3. </p>
-                <p className="text-wrap text-xl">
+                <p className="text-base sm:text-xl">3. </p>
+                <p className="text-wrap text-base sm:text-xl">
                   Membangun jaringan dan memperkuat reputasi di Asia Pasifik.
                 </p>
               </div>
@@ -240,14 +252,14 @@ function index() {
         </div>
       </section>
 
-      <div className="px-24">
+      <div className="sm:px-24 px-10">
         <hr className="w-full border-[#D1D1D1]" />
       </div>
 
-      <section className="px-24 my-11 flex flex-col gap-15">
-        <h1 className="text-[#00B0A8] font-bold text-4xl">Nilai Perusahaan</h1>
+      <section className="sm:px-24 px-8 my-11 flex flex-col gap-11 sm:gap-15">
+        <h1 className="text-[#00B0A8] font-bold text-2xl sm:text-4xl">Nilai Perusahaan</h1>
 
-        <div className="flex gap-15">
+        <div className="flex flex-wrap md:flex-nowrap gap-15">
           {/* Left: only the akhlak-text logo */}
           <div className="flex-shrink-0 min-w-96">
             <Image
@@ -260,7 +272,7 @@ function index() {
 
           {/* Right: all the rest */}
           <div className="flex flex-col gap-4">
-            <p className="text-xl whitespace-normal break-words">
+            <p className="text-base sm:text-xl whitespace-normal break-words">
               Sebagaimana ditekankan dalam Surat Edaran Menteri BUMN Nomor SE-7/MBU/07/2020 tanggal 1 Juli 2020,
               sebagai 3 perusahaan BUMN jasa survey (BKI, SUCOFINDO, dan SURVEYOR INDONESIA) yang tergabung menjadi
               IDSurvey telah mengadopsi secara taktis nilai-nilai utama dalam AKHLAK agar dapat diaplikasikan secara
@@ -270,18 +282,18 @@ function index() {
               besar bagi perekonomian Indonesia dan mampu menjadi perusahaan jasa survey bertaraf internasional.
             </p>
 
-            <p className="text-xl">AKHLAK memiliki makna nilai-nilai yang mengutamakan:</p>
+            <p className="text-base sm:text-xl">AKHLAK memiliki makna nilai-nilai yang mengutamakan:</p>
 
             <div className="">
-              <div className="flex gap-3"><p className="text-xl">1.</p><p className="text-xl">Amanah</p></div>
-              <div className="flex gap-3"><p className="text-xl">2.</p><p className="text-xl">Kompeten</p></div>
-              <div className="flex gap-3"><p className="text-xl">3.</p><p className="text-xl">Harmonis</p></div>
-              <div className="flex gap-3"><p className="text-xl">4.</p><p className="text-xl">Loyal</p></div>
-              <div className="flex gap-3"><p className="text-xl">5.</p><p className="text-xl">Adaptif</p></div>
-              <div className="flex gap-3"><p className="text-xl">6.</p><p className="text-xl">Kolaboratif</p></div>
+              <div className="flex gap-3"><p className="text-base sm:text-xl">1.</p><p className="text-base sm:text-xl">Amanah</p></div>
+              <div className="flex gap-3"><p className="text-base sm:text-xl">2.</p><p className="text-base sm:text-xl">Kompeten</p></div>
+              <div className="flex gap-3"><p className="text-base sm:text-xl">3.</p><p className="text-base sm:text-xl">Harmonis</p></div>
+              <div className="flex gap-3"><p className="text-base sm:text-xl">4.</p><p className="text-base sm:text-xl">Loyal</p></div>
+              <div className="flex gap-3"><p className="text-base sm:text-xl">5.</p><p className="text-base sm:text-xl">Adaptif</p></div>
+              <div className="flex gap-3"><p className="text-base sm:text-xl">6.</p><p className="text-base sm:text-xl">Kolaboratif</p></div>
             </div>
 
-            <p className="text-xl">
+            <p className="text-base sm:text-xl">
               Dimana nilai-nilai tersebut memiliki penjabarannya masing-masing serta dilengkapi dengan panduan perilaku
               dan kode etik atau kode perilaku, yaitu:
             </p>
@@ -296,13 +308,13 @@ function index() {
         </div>
       </section>
 
-      <div className="px-24">
+      <div className="sm:px-24 px-10">
         <hr className="w-full border-[#D1D1D1]" />
       </div>
 
       {/* DEWAN KOMISARIS*/}
-      <section className="px-24 my-11 flex flex-col gap-15">
-        <h1 className="text-[#00B0A8] font-bold text-4xl">Dewan Komisaris Holding</h1>
+      <section className="sm:px-24 px-8 my-11 flex flex-col gap-11 sm:gap-15">
+        <h1 className="text-[#00B0A8] font-bold text-2xl sm:text-4xl">Dewan Komisaris Holding</h1>
 
         {/* EACH PROFILE TEMPLATE*/}
         {/* <div className="flex gap-15">
@@ -329,16 +341,16 @@ function index() {
         </div> */}
 
         {dewanKomisaris.map((member, index) => (
-          <div className="flex gap-15" key={`${index}-${member.name}`}>
+          <div className="flex sm:gap-15 gap-5 flex-wrap md:flex-nowrap" key={`${index}-${member.name}`}>
 
             <div className="min-w-96">
               <Image src={member.image} alt="" width={100} className="mb-6" />
-              <h1 className="text-4xl text-[#070707] font-bold mb-1">{member.name}</h1>
-              <p className="text-2xl text-[#6D6D6D] font-semibold">{member.role}</p>
+              <h1 className="text-2xl sm:text-4xl text-[#070707] font-bold mb-1">{member.name}</h1>
+              <p className="text-xl sm:text-2xl text-[#6D6D6D] font-semibold">{member.role}</p>
             </div>
 
             <p
-              className="text-xl text-[#454545]"
+              className="sm:text-xl text-base text-[#454545]"
               dangerouslySetInnerHTML={{ __html: member.desc }}
             />
 
@@ -347,25 +359,25 @@ function index() {
 
       </section>
 
-      <div className="px-24">
+      <div className="sm:px-24 px-10">
         <hr className="w-full border-[#D1D1D1]" />
       </div>
 
       {/* JAJARAN KOMISARIS */}
-      <section className="px-24 my-11 flex flex-col gap-15 mb-36">
-        <h1 className="text-[#00B0A8] font-bold text-4xl">Jajaran Komisaris Holding</h1>
+      <section className="sm:px-24 px-8 my-11 flex flex-col gap-11 sm:gap-15 sm:mb-36">
+        <h1 className="text-[#00B0A8] font-bold text-2xl sm:text-4xl">Jajaran Komisaris Holding</h1>
 
         {jajaranKomisaris.map((member, index) => (
-          <div className="flex gap-15" key={`${index}-${member.name}`}>
+          <div className="flex sm:gap-15 gap-5 flex-wrap md:flex-nowrap" key={`${index}-${member.name}`}>
 
             <div className="min-w-96">
               <Image src={member.image} alt="" width={100} className="mb-6" />
-              <h1 className="text-4xl text-[#070707] font-bold mb-1">{member.name}</h1>
-              <p className="text-2xl text-[#6D6D6D] font-semibold">{member.role}</p>
+              <h1 className="text-2xl sm:text-4xl text-[#070707] font-bold mb-1">{member.name}</h1>
+              <p className="text-xl sm:text-2xl text-[#6D6D6D] font-semibold">{member.role}</p>
             </div>
 
             <p
-              className="text-xl text-[#454545]"
+              className="sm:text-xl text-base text-[#454545]"
               dangerouslySetInnerHTML={{ __html: member.desc }}
             />
 
